@@ -6,7 +6,8 @@ const colors = {
     white: '#fff',
     red: '#FF6149',
     yellow: '#FFE75E',
-    blue: '#296FFF'
+    blue: '#296FFF',
+    black: '#161313'
 }
 
 const MainScreen = styled.div`
@@ -58,7 +59,8 @@ const IconMenu = styled(FontAwesomeIcon)`
 `;
 
 const ButtonAnimate = styled.button`
-    background: ${colors.red};
+    position: relative;
+    background: ${colors.yellow};
     width: 200px;
     text-decoration: none;
     border: none;
@@ -66,29 +68,25 @@ const ButtonAnimate = styled.button`
     margin-top: 60px;
     margin-bottom: 50px;
     cursor: pointer;
-    transition: .5s;
+    transition: all .5s ease;
+    overflow: hidden;
+    color: ${colors.black};
 
-    &:hover{
-        animation-name: animationactive;
-        animation-duration: 1.5s;
-        /* animation-iteration-count: infinite; */
+    span {
+        clip-path: inset(0 29% 0 32%);
+        position: absolute;
+        width: 130%;
+        height: 100px;
         background: ${colors.blue};
-        
-
+        /* opacity: .2; */
+        top: -50%;
+        left: -130%;
+        transition: .7s;
     }
 
-    @keyframes animationactive {
-        0% {
-            
-            background-color: ${colors.red};
-        }
-
-        50% {
-            background: ${colors.yellow};
-        }
-
-        100% {
-            background: ${colors.blue};
+    &:hover{
+        span{
+            left:100%;
         }
     }
 `;

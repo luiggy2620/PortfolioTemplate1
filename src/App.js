@@ -30,7 +30,11 @@ function App() {
         <Presentation>
           <h2>Hi, I am Luiggy</h2>
           <p>Welcome to my portfolio</p>
-          <ButtonAnimate>About Me</ButtonAnimate>
+
+          <ButtonAnimate>
+            About Me
+            <span></span>
+          </ButtonAnimate>
         </Presentation>
 
         <Networks>

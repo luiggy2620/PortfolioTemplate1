@@ -1,53 +1,58 @@
-import { MainScreen, FirstScreen, ButtonAnimate, Menu, OptionMenu, IconMenu, Presentation, 
-        Networks, AboutMeDiv, ExperienceDiv, ContactDiv} from './elements/portfolio'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUser, faBriefcase, faPhone, faInstagram } from '@fortawesome/free-solid-svg-icons'
+import { Main, FirstScreen, ButtonAnimate, Menu, OptionMenu, IconMenu, Presentation, 
+        Networks, AboutMeDiv, ExperienceDiv, ContactDiv, Figures, IAM} from './elements/portfolio'
+import { faUser, faBriefcase, faPhone } from '@fortawesome/free-solid-svg-icons'
+import MenuOption from './components/OptionMenu'
 
 function App() {
   return (
-    <MainScreen>
+    <Main>
 
       <FirstScreen>
 
         <Menu>
-            <OptionMenu href="#contact">
-              <IconMenu icon={faPhone}/>
-              Contact
-            </OptionMenu>
+            <MenuOption
+                direccion="#contact"
+                icon={faPhone}
+                label="Contact"
+            />
 
-            <OptionMenu href="#experience">
-              <IconMenu icon={faBriefcase}/>
-              Experience
-            </OptionMenu>
+            <MenuOption
+                direccion="#experience"
+                icon={faBriefcase}
+                label="Experience"
+            />
 
-            <OptionMenu href="#aboutme">
-              <IconMenu icon={faUser}/>
-              About me
-            </OptionMenu>
-
+            <MenuOption
+                direccion="#aboutme"
+                icon={faUser}
+                label="About me"
+            />
         </Menu>
 
         <Presentation>
-          <h2>Hi, I am Luiggy</h2>
+          <IAM>Hi, I am Luiggy</IAM>
           <p>Welcome to my portfolio</p>
-
-          <ButtonAnimate>
-            About Me
-            <span></span>
-          </ButtonAnimate>
+          <ButtonAnimate>About Me</ButtonAnimate>
         </Presentation>
 
         <Networks>
-            <a href="https://www.instagram.com/020__luiggy/">
-              IG
+            <a href="" target="_blank">
+              Instagram
             </a>
-          <div>GH</div>
-          <div>TW</div>
+            <a href='' target="_blank">
+              Github
+            </a>
+            <a href='' target="_blank">
+              Facebook
+            </a>  
         </Networks>
 
       </FirstScreen>
 
       <AboutMeDiv id='aboutme'>
+
+          <h2>01</h2>
+          <p>Lorem ipsum dolor sit.</p>
           About Me
       </AboutMeDiv>
 
@@ -59,7 +64,7 @@ function App() {
           Contact
       </ContactDiv>
 
-    </MainScreen>
+    </Main>
     
   );
 }

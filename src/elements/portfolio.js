@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, {css} from "styled-components";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const colors = {
@@ -20,6 +20,9 @@ const FirstScreen = styled.div`
     background: ${colors.darkBlue};
     display: grid;
     grid-template-columns: 1fr 10%;
+    grid-template-rows: 10% 1fr;
+    grid-template-areas:    "menu menu"
+                            "presentation networks";
     height: 100vh;
 `;
 
@@ -30,8 +33,11 @@ const Figures = styled(FontAwesomeIcon)`
 `;
 
 const Presentation = styled.div`
+    grid-area: presentation;
     display: flex;
+    justify-content: center;
     flex-direction: column;
+    margin-bottom: 10vh;
     padding-left: 15%;
 
     h2 {
@@ -40,13 +46,12 @@ const Presentation = styled.div`
 `;
 
 const Menu = styled.div`
-    grid-column: span 2;
+    grid-area: menu;
     display: flex;
-    flex-direction: row-reverse;
+    justify-content: flex-end;
     align-items: center;
     margin-top: 4%;
     padding-right: 7%;
-    height: 10%;
 `;
 
 const OptionMenu = styled.a`
@@ -141,7 +146,7 @@ const ButtonAnimate = styled.button`
     color: ${colors.black};
     font-weight: 700;
     font-size: 110%;
-    border-radius: 10px;
+    border-radius: 5px;
 
     &::before {
         content: '';
@@ -163,29 +168,127 @@ const ButtonAnimate = styled.button`
 `;
 
 const Networks = styled.div`
+    grid-area: networks;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 200%;
-    height: 100%;
+    justify-content: center;
+    padding-bottom: 15vh;
+    margin-left: -10vh;
 `;
 
-const AboutMeDiv = styled.div`
-    background: orange;
-    height: 100vh;
+const SingleNetwork = styled.svg`
+    margin-top: 15px;
+
+    &:hover {
+        fill: ${colors.yellow};
+
+    }
 `;
 
-const ExperienceDiv = styled.div`
-    background: yellow;
-    height: 100vh;
+const SlidesInfo = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 17vh;
+`;
+
+const ProjectDiv = styled.div`
+    display: flex;
+    flex-direction: column-reverse;
+    width: 55%;
+    min-width: 800px;
+    height: 55vh;
+    background: ${colors.darkBlue};
+    opacity: .9999999;
+    background-position: center;
+    position: relative;
+    margin-top: 16vh;
+    margin-left: 100px;
+    box-shadow: 10px 15px 30px 5px rgba(163,163,163);
+    border-radius: 10px;
+    cursor: pointer;
+    
+    &::before{
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: -1;
+        background-image: url(${props => props.urlImage});
+        background-size: cover;
+        background-position: center;
+        opacity: .30;
+        transition: all .4s ease;
+    }
+
+    h1 {
+        position: absolute;
+        text-shadow: 5px 10px 30px #333;
+        right: 40px;
+        top: 0;
+        font-size: 25vh;
+        transition: all .4s ease;
+        opacity: 0;
+    }
+
+    div {
+        margin-left: 55px;
+        padding-bottom: 55px;
+        padding-right: 55px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+
+    h2 {
+        font-size: 50px;
+    }
+
+    &:hover {
+        h1 {
+            opacity: 1;
+            top: -27%;
+        }
+
+        &::before {
+            opacity: .60;
+        }
+    }
+
+    ${props => props.direction === 'izquierda' && css`
+
+    margin-left: -100px;
+    box-shadow: -10px 15px 30px 5px rgba(163,163,163);
+
+        h1 {
+            left: 35px;
+        }
+
+        div {
+            align-items: flex-start;
+        }
+    `}
 `;
 
 const ContactDiv = styled.div`
-    background: blue;
-    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: ${colors.darkBlue};
+    padding-top: 15vh;
+    padding-bottom: 15vh;
+
+    div {
+        display: flex;
+        flex-direction: row;
+    }
 `;
 
 
-
 export { Main, FirstScreen, ButtonAnimate, Menu, OptionMenu, IconMenu, Presentation, 
-        Networks, AboutMeDiv, ExperienceDiv, ContactDiv, Figures, IAM }
+        Networks, SingleNetwork, SlidesInfo, ProjectDiv, Figures, IAM, ContactDiv }

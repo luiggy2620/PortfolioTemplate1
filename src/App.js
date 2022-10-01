@@ -7,12 +7,73 @@ import Project  from './components/ProjetcDiv';
 import Github from './icons/Github';
 import Instagram from './icons/Instagram';
 import Twiter from './icons/Twiter';
+import Square from './icons/Square'
+import Triangle from './icons/Triangle'
+import Circle from './icons/Circle'
 
 function App() {
+
+  const parallax = (e) => {
+    // let figures = document.querySelectorAll(".figure");
+    // const speed = 5;
+
+    // figures.forEach( function(figure) {
+    //     const x = (window.innerWidth - e.pageX*speed)/100
+    //     const y = (window.innerHeight - e.pageY*speed)/100
+    //     figure.style.transform = `translateX(${x}px) translateY(${y}px)`
+    // });
+  }
+
   return (
     <Main>
 
-      <FirstScreen>
+      <FirstScreen onMouseOver={parallax}>
+
+        <Square
+          fill='coral'
+          top='80%'
+          left='80%'
+        />
+        <Triangle
+          fill='pink'
+          top='85%'
+          left='25%'
+        />
+        <Circle
+          fill='yellow'
+          top='70%'
+          left='5%'
+        />
+        <Square
+          fill='coral'
+          top='25%'
+          left='8%'
+        />
+        <Square
+          fill='coral'
+          top='15%'
+          left='75%'
+        />
+        <Circle
+          fill='yellow'
+          top='10%'
+          left='25%'
+        />
+        <Square
+          fill='coral'
+          top='55%'
+          left='45%'
+        />
+        <Triangle
+          fill='pink'
+          top='25%'
+          left='50%'
+        />
+        <Circle
+          fill='yellow'
+          top='70%'
+          left='65%'
+        />
 
         <Menu>
             <MenuOption

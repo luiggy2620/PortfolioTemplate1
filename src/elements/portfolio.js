@@ -17,6 +17,7 @@ const Main = styled.div`
 
 const FirstScreen = styled.div`
     position: relative;
+    overflow: hidden;
     background: ${colors.darkBlue};
     display: grid;
     grid-template-columns: 1fr 10%;
@@ -26,10 +27,11 @@ const FirstScreen = styled.div`
     height: 100vh;
 `;
 
-const Figures = styled(FontAwesomeIcon)`
+const Figure = styled.svg`
     position: absolute;
-    height: 5%;
-    bottom: 50%;
+    top: ${props => props.top};
+    left: ${props => props.left};
+    transform: rotate(${props => props.rotate}deg);
 `;
 
 const Presentation = styled.div`
@@ -39,6 +41,7 @@ const Presentation = styled.div`
     flex-direction: column;
     margin-bottom: 10vh;
     padding-left: 15%;
+    z-index: 1;
 
     h2 {
         font-size: 70px;
@@ -71,9 +74,9 @@ const OptionMenu = styled.a`
         position: absolute;
         transition: width 540ms, opacity 300ms ease;
         top: 0;
-        bottom: -60%;
+        bottom: -45%;
         margin: auto 0;
-        height: 5px;
+        height: 3px;
         width: 0;
         border-radius: 4px;
     }
@@ -291,4 +294,4 @@ const ContactDiv = styled.div`
 
 
 export { Main, FirstScreen, ButtonAnimate, Menu, OptionMenu, IconMenu, Presentation, 
-        Networks, SingleNetwork, SlidesInfo, ProjectDiv, Figures, IAM, ContactDiv }
+        Networks, SingleNetwork, SlidesInfo, ProjectDiv, Figure, IAM, ContactDiv }

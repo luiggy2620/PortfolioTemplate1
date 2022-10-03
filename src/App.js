@@ -1,9 +1,15 @@
 import { Main, FirstScreen, ButtonAnimate, Menu, Presentation, 
         Networks, SlidesInfo, IAM, ContactDiv } from './elements/portfolio'
-import { faUser, faBriefcase, faPhone } from '@fortawesome/free-solid-svg-icons'
+import { faUser, faBriefcase, faPhone, faCircleHalfStroke } from '@fortawesome/free-solid-svg-icons'
 import MenuOption from './components/OptionMenu'
 import Project  from './components/ProjetcDiv';
 
+import japon from './Images/japon.png'
+import newyork from './Images/newyork.jpg'
+import london from './Images/london.jpg'
+import paris from './Images/paris.png'
+
+import Logo from './icons/Logo'
 import Github from './icons/Github';
 import Instagram from './icons/Instagram';
 import Twiter from './icons/Twiter';
@@ -14,65 +20,75 @@ import Circle from './icons/Circle'
 function App() {
 
   const parallax = (e) => {
-    // let figures = document.querySelectorAll(".figure");
-    // const speed = 5;
+    var content = document.getElementById('firstcontent');
+    content.querySelectorAll('.figure').forEach(figure => {
+        const speed = figure.getAttribute('speed')
+        const x = (window.innerWidth - e.pageX*speed)/100
+        const y = (window.innerHeight - e.pageY*speed)/100
 
-    // figures.forEach( function(figure) {
-    //     const x = (window.innerWidth - e.pageX*speed)/100
-    //     const y = (window.innerHeight - e.pageY*speed)/100
-    //     figure.style.transform = `translateX(${x}px) translateY(${y}px)`
-    // });
+        figure.style.transform = `translateX(${x}px) translateY(${y}px)`
+    })
   }
 
   return (
     <Main>
 
-      <FirstScreen onMouseOver={parallax}>
+      <FirstScreen id='firstcontent' onMouseMove={parallax}>
 
+        <Logo width='100%' height='100%' stroke='#748DA6' isAbsolute='true'/>
         <Square
           fill='coral'
           top='80%'
           left='80%'
+          speed='5'
         />
         <Triangle
           fill='pink'
           top='85%'
           left='25%'
+          speed='-5'
         />
         <Circle
           fill='yellow'
           top='70%'
           left='5%'
+          speed='2'
         />
         <Square
           fill='coral'
           top='25%'
           left='8%'
+          speed='8'
         />
         <Square
           fill='coral'
           top='15%'
           left='75%'
+          speed='5'
         />
         <Circle
           fill='yellow'
           top='10%'
           left='25%'
+          speed='-2'
         />
         <Square
           fill='coral'
           top='55%'
           left='45%'
+          speed='3'
         />
         <Triangle
           fill='pink'
           top='25%'
           left='50%'
+          speed='6'
         />
         <Circle
           fill='yellow'
           top='70%'
           left='65%'
+          speed='-6'
         />
 
         <Menu>
@@ -91,6 +107,7 @@ function App() {
                 icon={faPhone}
                 label="Contact"
             />
+            <MenuOption icon={faCircleHalfStroke}/>
         </Menu>
 
         <Presentation>
@@ -113,20 +130,20 @@ function App() {
 
       </FirstScreen>
 
-      <SlidesInfo>
+      <SlidesInfo id="experience">
 
           <Project
             number='01'
             nameProject="My Fist Project"
             description="This is my first project."
-            urlImage='./../../Images/japon.png'
+            urlImage={newyork}
           />      
   
           <Project
             number="02"
             nameProject="My Second Project"
             description="This is my second project."
-            urlImage=''
+            urlImage={japon}
             direction="izquierda"
           />
 
@@ -134,31 +151,33 @@ function App() {
             number="03"
             nameProject="My Third Project"
             description="This is my third project."
-            urlImage=''
+            urlImage={london}
           /> 
 
           <Project
             number="04"
             nameProject="My Fourth Project"
             description="This is my fourth project."
-            urlImage=''
+            urlImage={paris}
             direction="izquierda"
           />
       </SlidesInfo>
 
-      <ContactDiv>
+      <ContactDiv id='contact'>
+        <Logo width='150px' height='150px'/>
+
         <div>
-          <MenuOption
-                direccion="https://github.com/luiggy2620"
-                label="Github"
-            />
+         <MenuOption
+                direccion="https://www.facebook.com/luiggy.7902564"
+                label="Facebook"
+          />
           <MenuOption
                 direccion=""
                 label="Instragram"
-            />
+          />
           <MenuOption
-                direccion="https://www.facebook.com/luiggy.7902564"
-                label="Twiter"
+                direccion="https://github.com/luiggy2620"
+                label="Github"
             />
         </div>
         <p>© 2022 Luiggy Mamani</p>

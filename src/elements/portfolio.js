@@ -31,7 +31,15 @@ const Figure = styled.svg`
     position: absolute;
     top: ${props => props.top};
     left: ${props => props.left};
-    transform: rotate(${props => props.rotate}deg);
+`;
+
+const LogoIcon = styled.svg`
+    ${props => props.isAbsolute === 'true' && css`
+        opacity: .3;
+        position: absolute;
+        top: ${props => props.top};
+        left: ${props => props.left};
+    `}
 `;
 
 const Presentation = styled.div`
@@ -44,7 +52,7 @@ const Presentation = styled.div`
     z-index: 1;
 
     h2 {
-        font-size: 70px;
+        font-size: 4.375em;
     }
 `;
 
@@ -58,23 +66,25 @@ const Menu = styled.div`
 `;
 
 const OptionMenu = styled.a`
+    margin: 0 20px 0 20px;
+    padding: 20px 5px 20px 5px;
     position: relative;
     color: ${colors.white};
-    margin-left: 45px;
     text-decoration: none;
-    display: flex;
-    align-items: center;
     font-weight: 700;
-    padding: 23px 0 23px 0;
     transition: all 450ms ease;
     overflow: hidden;
+
+    span {
+        
+    }
 
     &::before, &::after {
         content: '';
         position: absolute;
         transition: width 540ms, opacity 300ms ease;
         top: 0;
-        bottom: -45%;
+        bottom: -50%;
         margin: auto 0;
         height: 3px;
         width: 0;
@@ -90,7 +100,7 @@ const OptionMenu = styled.a`
         right: 0;
     }
 
-    &:hover{
+    &:hover {
         &::before {
             width: 100%;
             transition: width 250ms ease;
@@ -104,14 +114,14 @@ const OptionMenu = styled.a`
 
         color: ${colors.yellow};
     }
-
-    /* @keyframes animateOption {
-        
-    } */
+    ${props => props.label === '' &&  css`
+        padding-left: 13px;
+    `}
 `;
 
 const IconMenu = styled(FontAwesomeIcon)`
-    margin-right: 10px;
+    margin-right: 10px
+    
 `;
 
 const IAM = styled.h2`
@@ -148,7 +158,7 @@ const ButtonAnimate = styled.button`
     margin-top: 4%;
     color: ${colors.black};
     font-weight: 700;
-    font-size: 110%;
+    font-size: 1.125rem;
     border-radius: 5px;
 
     &::before {
@@ -178,6 +188,7 @@ const Networks = styled.div`
     justify-content: center;
     padding-bottom: 15vh;
     margin-left: -10vh;
+    z-index: 1;
 `;
 
 const SingleNetwork = styled.svg`
@@ -202,6 +213,7 @@ const ProjectDiv = styled.div`
     width: 55%;
     min-width: 800px;
     height: 55vh;
+    min-height: 450px;
     background: ${colors.darkBlue};
     opacity: .9999999;
     background-position: center;
@@ -232,7 +244,7 @@ const ProjectDiv = styled.div`
         text-shadow: 5px 10px 30px #333;
         right: 40px;
         top: 0;
-        font-size: 25vh;
+        font-size: 15em;
         transition: all .4s ease;
         opacity: 0;
     }
@@ -247,7 +259,7 @@ const ProjectDiv = styled.div`
     }
 
     h2 {
-        font-size: 50px;
+        font-size: 3.125em;
     }
 
     &:hover {
@@ -269,7 +281,7 @@ const ProjectDiv = styled.div`
         h1 {
             left: 35px;
         }
-
+        
         div {
             align-items: flex-start;
         }
@@ -294,4 +306,4 @@ const ContactDiv = styled.div`
 
 
 export { Main, FirstScreen, ButtonAnimate, Menu, OptionMenu, IconMenu, Presentation, 
-        Networks, SingleNetwork, SlidesInfo, ProjectDiv, Figure, IAM, ContactDiv }
+        Networks, SingleNetwork, SlidesInfo, ProjectDiv, Figure, IAM, ContactDiv, LogoIcon }

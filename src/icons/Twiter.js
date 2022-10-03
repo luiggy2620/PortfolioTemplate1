@@ -1,4 +1,4 @@
-import * as React from "react"
+import React from "react"
 import { SingleNetwork } from "../elements/portfolio"
 
 const Twiter = ({fill='white', width='60px', height='60px'}) => (

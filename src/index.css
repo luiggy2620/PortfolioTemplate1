@@ -13,4 +13,18 @@ body {
   background: #fff;
   color: aliceblue;
   font-family: 'Montserrat Alternates', sans-serif;
+  font-size: 16px;
+}
+
+@media screen and (max-width: 600px){
+	/*Big smartphones [426px -> 600px]*/
+  body {
+    font-size: 14px;
+  }
+}
+@media screen and (max-width: 425px){
+	/*Small smartphones [325px -> 425px]*/
+  body {
+    font-size: 12px;
+  }
 }

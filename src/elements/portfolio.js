@@ -5,7 +5,7 @@ const colors = {
     darkBlue: '#18202E',
     white: '#fff',
     red: '#FF6149',
-    yellow: '#FFE75E',
+    yellow: '#FFCB42',
     blue: '#296FFF',
     black: '#161313'
 }
@@ -16,6 +16,7 @@ const Main = styled.div`
 `;
 
 const FirstScreen = styled.div`
+    transition: all 450ms ease;
     position: relative;
     overflow: hidden;
     background: ${colors.darkBlue};
@@ -25,6 +26,11 @@ const FirstScreen = styled.div`
     grid-template-areas:    "menu menu"
                             "presentation networks";
     height: 100vh;
+
+    ${props => props.isDark === 'false' && css`
+        background: ${colors.white};
+        color: ${colors.darkBlue};
+    `}
 `;
 
 const Figure = styled.svg`
@@ -75,9 +81,67 @@ const OptionMenu = styled.a`
     transition: all 450ms ease;
     overflow: hidden;
 
-    span {
-        
+    &::before, &::after {
+        content: '';
+        position: absolute;
+        transition: width 540ms, opacity 300ms ease;
+        top: 0;
+        bottom: -50%;
+        margin: auto 0;
+        height: 3px;
+        width: 0;
+        border-radius: 4px;
     }
+
+    &::before {
+        left: 0;
+    }
+
+    &::after {
+        background: ${colors.yellow};
+        right: 0;
+    }
+
+    &:hover {
+        &::before {
+            width: 100%;
+            transition: width 250ms ease;
+            background-color: ${colors.yellow};
+        }
+
+        &::after {
+            width: 100%;
+            background-color: transparent;
+        }
+
+        color: ${colors.yellow};
+    }
+
+    ${props => props.label === '' &&  css`
+        padding-left: 13px;
+    `}
+
+    ${props => props.isDark === 'false' && css`
+        color: ${colors.darkBlue};
+    `}
+`;
+
+const IconMenu = styled(FontAwesomeIcon)`
+    margin-right: 10px
+`;
+
+const BottonSwitchTheme = styled.button`
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+    background: transparent;
+    color: ${colors.white};
+    margin: 0 20px 0 20px;
+    padding: 20px 0 20px 10px;
+    cursor: pointer;
+    z-index: 1;
+    border: none;
+    transition: all 450ms ease;
 
     &::before, &::after {
         content: '';
@@ -114,14 +178,10 @@ const OptionMenu = styled.a`
 
         color: ${colors.yellow};
     }
-    ${props => props.label === '' &&  css`
-        padding-left: 13px;
-    `}
-`;
 
-const IconMenu = styled(FontAwesomeIcon)`
-    margin-right: 10px
-    
+    ${props => props.isDark === 'false' && css`
+        color: ${colors.darkBlue};
+    `}
 `;
 
 const IAM = styled.h2`
@@ -153,10 +213,9 @@ const ButtonAnimate = styled.button`
     cursor: pointer;
     transition: all .75s ease;
     overflow: hidden;
-    color: ${colors.black};
+    color: ${colors.darkBlue};
     padding: 20px;
     margin-top: 4%;
-    color: ${colors.black};
     font-weight: 700;
     font-size: 1.125rem;
     border-radius: 5px;
@@ -196,8 +255,11 @@ const SingleNetwork = styled.svg`
 
     &:hover {
         fill: ${colors.yellow};
-
     }
+
+    ${props => props.isDark === 'false' && css`
+        fill: ${colors.darkBlue};
+    `}
 `;
 
 const SlidesInfo = styled.div`
@@ -306,4 +368,4 @@ const ContactDiv = styled.div`
 
 
 export { Main, FirstScreen, ButtonAnimate, Menu, OptionMenu, IconMenu, Presentation, 
-        Networks, SingleNetwork, SlidesInfo, ProjectDiv, Figure, IAM, ContactDiv, LogoIcon }
+        Networks, SingleNetwork, SlidesInfo, ProjectDiv, Figure, IAM, ContactDiv, LogoIcon, BottonSwitchTheme }

@@ -1,5 +1,6 @@
+import React, {useState} from 'react';
 import { Main, FirstScreen, ButtonAnimate, Menu, Presentation, 
-        Networks, SlidesInfo, IAM, ContactDiv } from './elements/portfolio'
+        Networks, SlidesInfo, IAM, ContactDiv, BottonSwitchTheme, IconMenu } from './elements/portfolio'
 import { faUser, faBriefcase, faPhone, faCircleHalfStroke } from '@fortawesome/free-solid-svg-icons'
 import MenuOption from './components/OptionMenu'
 import Project  from './components/ProjetcDiv';
@@ -30,10 +31,20 @@ function App() {
     })
   }
 
+  const [isDark, setIsDark] = useState('true');
+
+  const switchTheme = () => {
+    if(isDark === 'true') {
+      setIsDark('false');
+    } else {
+      setIsDark('true');
+    }
+  }
+
   return (
     <Main>
 
-      <FirstScreen id='firstcontent' onMouseMove={parallax}>
+      <FirstScreen id='firstcontent' onMouseMove={parallax} isDark={isDark}>
 
         <Logo width='100%' height='100%' stroke='#748DA6' isAbsolute='true'/>
         <Square
@@ -91,23 +102,29 @@ function App() {
           speed='-6'
         />
 
-        <Menu>
+        <Menu isDark={isDark}>
             <MenuOption
                 direccion="#aboutme"
                 icon={faUser}
                 label="About me"
+                isDark={isDark}
             />
             <MenuOption
                 direccion="#experience"
                 icon={faBriefcase}
                 label="Experience"
+                isDark={isDark}
             />
             <MenuOption
                 direccion="#contact"
                 icon={faPhone}
                 label="Contact"
+                isDark={isDark}
             />
-            <MenuOption icon={faCircleHalfStroke}/>
+
+            <BottonSwitchTheme isDark={isDark} onClick={switchTheme}>
+                <IconMenu icon={faCircleHalfStroke}/>
+            </BottonSwitchTheme>
         </Menu>
 
         <Presentation>
@@ -118,13 +135,13 @@ function App() {
 
         <Networks>
             <a href='' target="_blank">
-              <Instagram/>
+              <Instagram isDark={isDark}/>
             </a>
             <a href='https://github.com/luiggy2620' target="_blank">
-              <Github/>
+              <Github isDark={isDark}/>
             </a>
             <a href='https://www.facebook.com/luiggy.7902564' target="_blank">
-              <Twiter/>
+              <Twiter isDark={isDark}/>
             </a>  
         </Networks>
 
